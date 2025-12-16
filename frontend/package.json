@@ -8,17 +8,19 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "dependencies": {
-    "axios": "^1.13.2",
-    "daisyui": "^5.5.14",
-    "lucide-react": "^0.561.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "react-hot-toast": "^2.6.0",
-    "react-router": "^7.10.1",
-    "react-router-dom": "^7.10.1",
-    "vite": "^7.2.4"
-  },
+"dependencies": {
+  "axios": "^1.13.2",
+  "daisyui": "^5.5.14",
+  "lucide-react": "^0.561.0",
+  "react": "^19.2.0",
+  "react-dom": "^19.2.0",
+  "react-hot-toast": "^2.6.0",
+  "react-router": "^7.10.1",
+  "react-router-dom": "^7.10.1",
+  "vite": "^7.2.4",
+  "@vitejs/plugin-react": "^5.1.1"
+}
+,
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@types/react": "^19.2.5",
