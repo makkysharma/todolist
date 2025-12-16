@@ -21,6 +21,7 @@
     "mongoose": "^8.14.3"
   },
   "devDependencies": {
-    "daisyui": "^4.12.24"
+    "daisyui": "^4.12.24",
+    "nodemon": "^3.1.11"
   }
 }

@@ -1,65 +1,31 @@
-import React from 'react'
-import {Link} from "react-router";
-import {PlusIcon} from "lucide-react"
-
+import React from "react";
+import { Link } from "react-router-dom";
+import { PlusIcon, NotebookPenIcon } from "lucide-react";
 
 const Navbar = () => {
   return (
-    <header className="navbar bg-base-100">
-  <div className="navbar-start">
-    <div className="dropdown">
-      <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M4 6h16M4 12h8m-8 6h16" />
-        </svg>
-      </div>
-      <ul
-        tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-        <li><a>Item 1</a></li>
-        <li>
-          <a>Parent</a>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </li>
-        <li><a>Item 3</a></li>
-      </ul>
-    </div>
-    <a className="btn btn-ghost text-xl">daisyUI</a>
-  </div>
-  <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
-      <li><a>Item 1</a></li>
-      <li>
-        <details>
-          <summary>Parent</summary>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </details>
-      </li>
-      <li><a>Item 3</a></li>
-    </ul>
-  </div>
-  <div className="navbar-end">
-    <Link to={"/create"} className="btn">
-    <PlusIcon className='size-5' />
-    Button</Link>
-  </div>
-</header>
-  )
-}
+    <header className="sticky top-0 z-50 bg-base-100/80 backdrop-blur border-b border-base-300">
+      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+        {/* Logo */}
+        <Link
+          to="/"
+          className="flex items-center gap-2 text-lg font-semibold tracking-tight"
+        >
+          <NotebookPenIcon className="size-5 text-emerald-500" />
+          <span>NotePad</span>
+        </Link>
 
-export default Navbar
+        {/* Actions */}
+        <Link
+          to="/create"
+          className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-600 transition"
+        >
+          <PlusIcon className="size-4" />
+          Add Note
+        </Link>
+      </div>
+    </header>
+  );
+};
+
+export default Navbar;
