@@ -9,37 +9,37 @@ import { fileURLToPath } from "url";
 
 dotenv.config();
 
-const PORT = process.env.PORT || 5002;
+const app = express();
 
-/* ES module dirname fix */
+/* Render requires this */
+const PORT = process.env.PORT;
+
+/* Fix __dirname in ES modules */
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const app = express();
-
-/* Dev CORS */
-if (process.env.NODE_ENV !== "production") {
-  app.use(cors({ origin: "http://localhost:5173" }));
-}
-
+/* Middleware */
 app.use(express.json());
-app.use(rateLimiter);
+app.use(cors());
 
-/* API routes ALWAYS */
+/* Rate limit ONLY APIs */
+app.use("/api", rateLimiter);
+
+/* API routes */
 app.use("/api/notes", notesRoutes);
 
-/* ✅ Serve frontend correctly */
-if (process.env.NODE_ENV === "production") {
-  const frontendPath = path.join(__dirname, "../../frontend/dist");
+/* Serve frontend */
+const frontendPath = path.join(__dirname, "../../frontend/dist");
+console.log("Serving frontend from:", frontendPath);
 
-  app.use(express.static(frontendPath));
+app.use(express.static(frontendPath));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(frontendPath, "index.html"));
-  });
-}
+/* React Router fallback */
+app.get("*", (req, res) => {
+  res.sendFile(path.join(frontendPath, "index.html"));
+});
 
-
+/* Start server */
 const startServer = async () => {
   try {
     await connectDB();
