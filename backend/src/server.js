@@ -20,7 +20,9 @@ const __dirname = path.dirname(__filename);
 
 /* Middleware */
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: '*'
+}));
 
 /* Rate limit ONLY APIs */
 app.use("/api", rateLimiter);
