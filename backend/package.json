@@ -5,8 +5,10 @@
   "main": "src/server.js",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "start": "node src/server.js"
-  },
+    "start": "node src/server.js",
+    "build": "echo \"Backend build complete\""
+  }
+,
   "type": "module",
   "keywords": [],
   "author": "",
