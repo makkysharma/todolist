@@ -34,7 +34,6 @@ console.log("Serving frontend from:", frontendPath);
 
 app.use(express.static(frontendPath));
 
-/* React Router fallback */
 app.get("*", (req, res) => {
   res.sendFile(path.join(frontendPath, "index.html"));
 });
